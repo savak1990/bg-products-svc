@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -19,13 +20,14 @@ func main() {
 	repo := products.NewInMemoryStore()
 	s := httpserver.NewServer(repo)
 
+	addr := fmt.Sprintf(":%s", cfg.Port)
 	srv := &http.Server{
-		Addr:         cfg.Addr,
+		Addr:         addr,
 		Handler:      s.Handler(),
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 15 * time.Second,
 	}
 
-	log.Printf("starting %s server on %s\n", cfg.Env, cfg.Addr)
+	log.Printf("starting %s server on port %s\n", cfg.Env, cfg.Port)
 	log.Fatal(srv.ListenAndServe())
 }

@@ -8,7 +8,7 @@ ENV CGO_ENABLED=0
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -ldflags="-s -w" -o /out/bg-products-svc ./cmd/server
+RUN go build -ldflags="-s -w" -trimpath -o /out/bg-products-svc ./cmd/server
 
 # --- Runtime stage (distroless static, nonroot) ---
 FROM gcr.io/distroless/static:nonroot

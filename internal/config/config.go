@@ -7,7 +7,7 @@ import (
 )
 
 type Config struct {
-	Addr         string        `env:"ADDR" envDefault:":8080"`
+	Port         string        `env:"PORT" envDefault:"8080"`
 	ReadTimeout  time.Duration `env:"READ_TIMEOUT" envDefault:"5s"`
 	WriteTimeout time.Duration `env:"WRITE_TIMEOUT" envDefault:"15s"`
 	Env          string        `env:"ENV" envDefault:"dev"`
