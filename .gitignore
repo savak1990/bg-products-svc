@@ -1,0 +1,64 @@
+# Binaries
+/*.exe
+/*.exe~
+/*.dll
+/*.so
+/*.dylib
+/bg-products-svc
+/out/
+
+# Build directories
+/bin/
+/pkg/
+
+# Test binary, coverage and results
+*.test
+coverage.out
+
+# Vendor
+/vendor/
+
+# Go workspace files
+go.work
+
+# Go build artifacts
+*.exe
+*.orig
+
+# Dependency directories
+**/node_modules/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Docker
+docker-compose.override.yml
+Dockerfile*~
+# ignore image tarballs
+*.tar
+
+# Secrets
+.env
+.env.local
+.env.*.local
+secrets.yml
+
+# Generated files
+*.gen.go
+
+# Temporary files
+.tmp
+
+# Distroless / runtime
+dist/
