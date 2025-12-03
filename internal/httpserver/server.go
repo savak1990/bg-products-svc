@@ -29,6 +29,7 @@ func NewServer(repo p.Repo) *Server {
 
 	r.GET("/healthz/live", s.onGetHealthzLive)
 	r.GET("/healthz/ready", s.onGetHealthzReady)
+	r.GET("/health", s.onGetHealthzLive)
 
 	return s
 }
