@@ -1,0 +1,41 @@
+name: Release Helm charts (GitHub Releases + gh-pages)
+on:
+  push:
+    # Tag pattern per chart; e.g. "bg-products-svc-0.0.1"
+    tags:
+      - "bg-products-svc-*"
+  workflow_dispatch: {}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to create releases and push to gh-pages
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+
+      # Optional: verify chart is loadable (fast sanity check)
+      - name: Lint chart
+        run: |
+          helm lint deploy/helm/bg-products-svc
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.6.0
+        env:
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          charts_dir: deploy/helm        # looks for chart dirs under here
+          skip_existing: true            # don't fail if re-running same tag
+          pages_branch: gh-pages         # where index.yaml will live
+          pages_index_path: index.yaml   # path within gh-pages
+
+      # Optional: print repo URL for logs
+      - name: Echo repo URL
+        run: |
+          echo "Helm repo: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY##*/}"

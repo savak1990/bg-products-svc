@@ -1,0 +1,11 @@
+apiVersion: v2
+name: bg-products-svc
+description: Simple products service for my test board game marketplace
+type: application
+version: 0.0.1
+appVersion: "v0.0.1"
+keywords:
+  - products
+  - bg-marketplace
+maintainers:
+  - name: Viacheslav Klovan
