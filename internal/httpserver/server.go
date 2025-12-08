@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/savak1990/bg-products-svc/internal/products"
 	p "github.com/savak1990/bg-products-svc/internal/products"
 )
 
@@ -39,7 +38,7 @@ func (s *Server) onGetProducts(c *gin.Context) {
 }
 
 func (s *Server) onPostProducts(c *gin.Context) {
-	var in products.Product
+	var in p.Product
 	if err := c.BindJSON(&in); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
