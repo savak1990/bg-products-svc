@@ -1,0 +1,19 @@
+apiVersion: v1
+entries:
+  bg-products-svc:
+  - apiVersion: v2
+    appVersion: v0.0.1
+    created: "2025-12-08T11:03:39.278646945Z"
+    description: Simple products service for my test board game marketplace
+    digest: 2e3ab0934d7c50c5b8b402a487917abb23a3b4f84a4057bbfdc94ed28c4f57de
+    keywords:
+    - products
+    - bg-marketplace
+    maintainers:
+    - name: Viacheslav Klovan
+    name: bg-products-svc
+    type: application
+    urls:
+    - bg-products-svc-0.0.1.tgz
+    version: 0.0.1
+generated: "2025-12-08T11:03:39.278657605Z"
