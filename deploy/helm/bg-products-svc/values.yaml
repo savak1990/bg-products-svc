@@ -59,16 +59,15 @@ ingress:
   className: "alb"  # Options: "alb" for AWS ALB (via aws-load-balancer-controller), "nginx" for nginx-ingress
   annotations:
     # AWS ALB Controller annotations (used when className is "alb")
-    alb.ingress.kubernetes.io/scheme: internet-facing  # Options: internet-facing, internal
-    alb.ingress.kubernetes.io/target-type: ip  # Options: ip, instance
-    alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready
-    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:region:account-id:certificate/certificate-id
-    # alb.ingress.kubernetes.io/ssl-redirect: '443'
-    
-    # Nginx ingress annotations (used when className is "nginx")
-    # nginx.ingress.kubernetes.io/rewrite-target: /
-    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-1:753939038916:certificate/aad20d97-4e4f-4519-8371-e53c11b07948
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    # alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+
+    # External DNS controller
+    # external-dns.alpha.kubernetes.io/alias: "true"
   hosts:
     - host: ""  # Leave empty for path-based routing without host, or specify a domain
       paths:
